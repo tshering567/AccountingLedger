@@ -1,14 +1,15 @@
 package org.example;
+import java.time.LocalDate;
 import java.util.Date;
 import java.time.LocalTime;
 public class Transaction {
-    private Date date;
+    private LocalDate date;
     private LocalTime time;
     private String description;
     private String  vendor;
     private double amount;
 
-    public Transaction(Date date, LocalTime time, String description, String vendor, double amount) {
+    public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
         this.time = time;
         this.description = description;
@@ -16,11 +17,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

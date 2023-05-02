@@ -1,23 +1,25 @@
 package org.example;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class main {
+
+public class Main {
     public static void main(String[] args) {
+
         homescreen();
     }
 
     private static void homescreen() {
         Scanner scanner = new Scanner(System.in);
+        //Display Homescreen
         System.out.println("Welcome to your accounting Ledger: ");
         System.out.println(("Main Menu"));
         System.out.println("[D] - Add Deposit");
         System.out.println("[P] - Make Payment");
         System.out.println("[L] - Ledger");
         System.out.println("[X] - Exit");
-
+      // use switch method for the options in the Homescreen
         String input = scanner.nextLine();
         switch (input.toUpperCase()){
             case "D":
@@ -40,13 +42,13 @@ public class main {
 
     }
 
-    private static void showLedger() {
-
+    private static void showLedger() { // Calling showLedger() method from the ledger class
+        Ledger.showLedger();
         }
 
-    }
 
-    private static void makePayment() {
+
+    private static void makePayment() {  // using Scanner to get user's input and storing it in the corresponding variable
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Date:(yyyy-MM-dd)");
         String date = scanner.nextLine();
@@ -57,19 +59,20 @@ public class main {
         System.out.println("Enter vendor");
         String vendor = scanner.next();
         System.out.println("Enter amount");
-        double amount = scanner.nextDouble();
+        double amount = scanner.nextDouble();//Storing  the amount as the Double.
 
-        try{
+        try{ // using the filewriter to add the collected data into the csv file
             FileWriter fileWriter = new FileWriter("transactions.csv", true);
-            fileWriter.write( "\n" + date + "|" + time + "|" + vendor + "|" + "-"  + amount + "|");
+            // store all the information with a -ve sign before the amount variable.
+            fileWriter.write( "\n" + date + "|" + time + "|" + description  + "|" + vendor + "|" + "-"  + amount + "|");
             System.out.println("Payment made successfully");
             fileWriter.close();
-        } catch (IOException e){
+        } catch (IOException e){ //prints out an error message when the input is wrong
             System.out.println("Error inputting data!");
         }
     }
 
-    private static void addDeposit() {
+    private static void addDeposit() { // using Scanner to get user's input and storing it in a corresponding variable
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Date:(yyyy-MM-dd)");
         String date = scanner.nextLine();
@@ -82,8 +85,9 @@ public class main {
         System.out.println("Enter amount");
         double amount = scanner.nextDouble();
 
-        try{
+        try{ // writing the information from the variables to the csv.file
             FileWriter fileWriter = new FileWriter("transactions.csv", true);
+            //add | in between the variables
             fileWriter.write( "\n" + date + "|" + time + "|" + vendor + "|" + amount + "|");
             System.out.println("Deposit added successfully");
             fileWriter.close();
