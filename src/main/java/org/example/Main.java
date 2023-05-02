@@ -76,21 +76,26 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Date:(yyyy-MM-dd)");
         String date = scanner.nextLine();
+
         System.out.println("Enter Time: ( HH:mm:SS");
         String time = scanner.nextLine();
+
         System.out.println("Enter Description");
         String description =scanner.nextLine();
+
         System.out.println("Enter vendor");
         String vendor = scanner.next();
+
         System.out.println("Enter amount");
         double amount = scanner.nextDouble();
 
         try{ // writing the information from the variables to the csv.file
             FileWriter fileWriter = new FileWriter("transactions.csv", true);
             //add | in between the variables
-            fileWriter.write( "\n" + date + "|" + time + "|" + vendor + "|" + amount + "|");
+            fileWriter.write( "\n" + date + "|" + time + "|" + description+ "|" + vendor + "|" + amount + "|");
             System.out.println("Deposit added successfully");
             fileWriter.close();
+
         } catch (IOException e){
             System.out.println("Error inputting data!");
         }
