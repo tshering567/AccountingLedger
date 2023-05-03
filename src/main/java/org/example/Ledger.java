@@ -1,5 +1,5 @@
 package org.example;
-
+import org.example.Main;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -95,12 +95,17 @@ public class Ledger {
                 showReports();
                 break;
             case "H":
-                System.exit(0);
+                backToHomeScreen();
                 break;
             default:
                 System.out.println("Please enter a valid option");
                 break;
         }
+    }
+
+    private static void backToHomeScreen() {
+        System.out.println("Going back to Home Screen...");
+        Main.homescreen();
     }
 
     private static void showReports() {
@@ -134,7 +139,7 @@ public class Ledger {
                 searchByVendor();
                 break;
             case 0:
-                back();
+                goBackToReturnMenu();
                 break;
             default:
                 System.out.println("Please enter a valid input");
@@ -143,7 +148,9 @@ public class Ledger {
         }
     }
 
-    private static void back() {
+    private static void goBackToReturnMenu() {
+        System.out.println("Returning to Reports Screen......");
+        showReports();
     }
 
     private static void searchByVendor() {

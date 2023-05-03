@@ -10,7 +10,7 @@ public class Main {
         homescreen(); //calling a homescreen() to display home screen menu.
     }
 
-    private static void homescreen() {
+    public static void homescreen() {
         Scanner scanner = new Scanner(System.in);
         //Display Homescreen
         System.out.println("Welcome to your accounting Ledger: ");
