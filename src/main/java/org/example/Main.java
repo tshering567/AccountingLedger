@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        homescreen();
+        homescreen(); //calling a homescreen() to display home screen menu.
     }
 
     private static void homescreen() {
