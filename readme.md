@@ -1,5 +1,5 @@
 # Accounting Ledger
-This user-friendly application allows users to manage their financial transactions.
+This is a user-friendly application that allows users to manage their financial transactions.
 They can add Deposit, make Payment or run reports.
 ### The application should have the following features:
 #### Home Screen:
