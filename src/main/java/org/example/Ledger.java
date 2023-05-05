@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
+
 public class Ledger {
    // initializing an arraylist which holds transaction objects and calling it transactionList
     // and we are inheriting the transactions array list from the getTransactions()
@@ -70,18 +71,19 @@ public class Ledger {
     }
 
     public static void showLedger() { // creating a method called showLedger() to display the ledger menu
+        String input = null;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to your ledger ");
-        System.out.println(("Main Menu: "));
+        System.out.println(("-----------Main Menu---------- "));
         System.out.println("[A] - Display all entries");
         System.out.println("[D] - Display only the entries that are deposited into the account");
         System.out.println("[p] - Display only the negative entries(payments)");
         System.out.println("[R] - Reports");
         System.out.println("[H] - Go back to Home page");
 
-     //using switch method instead of if/else statement to run the corresponding method based on user's input
-        String input = scanner.nextLine();
-        switch (input.toUpperCase()){
+        //using switch method instead of if/else statement to run the corresponding method based on user's input
+        input = scanner.nextLine();
+        switch (input.toUpperCase()) {
             case "A":
                 allEntries();
                 break;
@@ -100,9 +102,9 @@ public class Ledger {
             default:
                 System.out.println("Please enter a valid option");
                 break;
+
         }
     }
-
     private static void backToHomeScreen() {
         System.out.println("Going back to Home Screen...");
         Main.homescreen();
@@ -112,7 +114,7 @@ public class Ledger {
         Scanner scanner = new Scanner(System.in);
         //printing out a Report Screen
         System.out.println("Your reports ");
-        System.out.println(("Main Menu: "));
+        System.out.println(("-----------Main Menu---------- "));
         System.out.println("[1] - Month To Date");
         System.out.println("[2] - Previous Month");
         System.out.println("[3] - Year To Date");
@@ -149,14 +151,15 @@ public class Ledger {
     }
 
     private static void goBackToReturnMenu() {
-        System.out.println("Returning to Reports Screen......");
-        showReports();
+        System.out.println("Going back.....");
+        showLedger();
     }
 
     private static void searchByVendor() {
         Scanner scanner = new Scanner(System.in);
         System.out.println(" Please enter Vendor's name: ");
         String vendorName = scanner.nextLine();
+        System.out.println("Here are all your transaction from" + " " + vendorName);
 
         for(Transaction item : transactionsList){
             if(item.getVendor().equalsIgnoreCase(vendorName)){
@@ -208,7 +211,7 @@ public class Ledger {
 
         for (Transaction item : transactionsList){
             LocalDate transactionDate = item.getDate();
-            if (transactionDate.getMonthValue()==previousMonth) {
+            if (transactionDate.getMonthValue()==previousMonth && transactionDate.getYear() == currentDate.getYear()) {
                 System.out.println(item.getDate() + " | " + item.getTime() + " | " + item.getDescription() + " | " +
                         item.getVendor() + " | " +  item.getAmount());
             }
@@ -238,7 +241,8 @@ public class Ledger {
     }
 
     private static void showPaymentEntries() {
-        System.out.println("Payment");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Payments");
         for (Transaction item : transactionsList) { // loop through each transaction object(item) in the transactionslist
             // array list and check if the price is negative (payment)
 
@@ -248,10 +252,14 @@ public class Ledger {
                     item.getVendor() + " | " +  item.getAmount());
             }
         }
+
+
     }
 
+
+
     private static void showDepositedEntries() {
-        System.out.println(" Deposit");
+        System.out.println(" Deposits");
         for (Transaction item : transactionsList) { // loop through each transaction object(item) in the transactionslist
             // array list and check if the amount is positive(Deposits)
 
@@ -261,6 +269,8 @@ public class Ledger {
                         item.getVendor() + " | " + item.getAmount());
             }
         }
+
+
 
     }
 
